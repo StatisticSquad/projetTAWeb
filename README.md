@@ -82,3 +82,15 @@ dvl: l'utilisateur donne du sens aux données qui lui sont proposées. Interacti
 Regarder les fonctionnalités de commentaires et d'administration offertes par play ou utiliser un framework php et le faire fonctionner avec Java.
 
 24/10/13 :
+
+
+http://www.thefigtrees.net/lee/blog/2008/03/modeling_statistics_in_rdf_a_s.html
+On va stocker une partie des données récupérées sur le serveur. probablement les plus consultées.
+Une autre partie sera requétée en live.
+
+
+
+A FAIRE : une fonction qui renvoie toutes les stats suivant leur indice (ex : 70 %) ce qui permettrait de générer des statistiques puisque l'on trouverait des stats qui iraient ensemble.
+
+
+

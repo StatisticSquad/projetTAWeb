@@ -1,0 +1,76 @@
+Le principe de ce fichier est de montrer la forme général que doit prendre l'affichage de nos statistiques récupérées à la main.
+Il stockera une liste de toutes nos statistiques (toutesNosStatistiques)
+On appelle "statistique" la mise en rapport d'un objet (un groupe de personnes, un lieu, des biens matériels) par rapport à un fait (possede une voiture, a tant de km2 de zone agricole, a été vendu à tant d'exemplaires) qui se trouve dans un domaine (économie, agriculture, produits du jeux video) à un moment précis (une date, une période, une année)
+On appelle "statistique complète" la séquence de statistiques qui ont le même objet, le même fait, dans le même domaine mais à plusieurs moments.
+Par exemple
+Nombre d'exploitations agricole par région
+
+       		       	19997		2000		2003		2005		2007
+Ireland Du Nord		1.80900		1.724.000	1.708.000	1.664.000	1.580.0000
+Est une statistique complète
+
+On appelle une "série de statistiques" l'ensemble des données sur un fait. c'est à dire, toutes les statistiques complètes que l'on a sur un fait
+http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=ef_ls_ovaareg&lang=fr
+
+
+On appelle "intitulé" le "fait" sur quoi porte la statistique.
+Par exemple dans l'exemple de la statistique complète précédemment cité, son intitulé est "nombre d'exploitation agricole par région"
+
+Chaque statistique aura :
+       un intitulé
+       	  par exemple "nombre de joueurs possedant une console winombre d'exploitation agricole par région"
+       une uri qui représentera la ressource
+       un id unique
+       des liens vers d'autres statistiques qui lui aujouteront du sens
+		un id de la statistique liée
+		la définition de ce lien, l'explication de ce qui les lie
+       une source 
+       	   un nom
+	      par exemple "Eurostat - La SAU"
+	   une url où l'on peut trouver cette statistique
+	       par exemple "http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=ef_ls_ovaareg&lang=fr"	       
+       une date de publication ou de dernière mise à jour au format Francais "jj/mm/aaaa"
+       	   par exemple "03/06/2012"
+       des domaines
+       	  par exemple "Agriculture Européenne"
+       un mode de récupération
+       	  par exemple "par Api" ou "manuelle"
+	des données
+	    une date
+	    un objet
+	    un indice 
+	       c'est à dire la donnée chiffrée
+	  
+
+
+
+{
+	"allStatitistics" :
+	{
+	    "statistic": {
+	        "title": "lIntituléDeLaStatistique",
+		"uri" : "l'uri de la statitistique",
+		"id" : "un identifiant unique de la stat",
+		"bounds" : {
+			"boundedTo" : ["id","bound"]
+			}
+		"source" : ["nomDeLaSource","url"]
+		"date" : "la date de la dernière mise à jour de ce jeux de données"
+		"recovery" : "le mode de récupération de la statistique."
+		"keywords" : "["les","différents", "mots-clefs", "liés", "à, "la, "statistique"	
+		"data" : {
+			"statsDate" : "la date de la donnée"
+			"statsDomaine" : "l'objet de cette donnée"
+			"index" : "la donnée chiffrée"
+			}
+		}
+	}
+}
+
+
+explication "bounds" : Une statistique peut être liée à plusieurs autres statistiques. On représente cela par une liste (bounds) de doublons (boundedToà : l'id de la statistique avec qui celle-ci est liée (id) et la définition du lien (bound)
+Par exemple : la statistique du nombre de morts sur les routes dans le colorado (id = 13) est liée à la statistique de la date de sortie des jeux vidéos (id = 124) par le lien "le nombre de tués sur les routes augmente lors de la sortie de jeux videos de courses de  voitures)
+
+
+"recovery" : la manière dont la statistique a été récupérée : par des requetes rdf, par des requetes sur une api ou entrée à la main"
+
